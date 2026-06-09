@@ -6,9 +6,38 @@
 
 int main() {
     // Nível Novato - Posicionamento dos Navios
+    printf("Bem vindo ao jogo de Batalha Naval! \n");
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+    int tabuleiro[10][10] = {0}; //todas as posições que começa em 0
+    int navioH[3] = {3, 3, 3}; //navio na horizontal
+    int navioV[3] = {3, 3, 3}; //navio na vertical
+    // navio na posição horizontal
+    int linhaH = 2, colunaH = 3; //posição inicial
+    for (int i = 0; i < 3; i++){
+        tabuleiro[linhaH][colunaH + i] = navioH[i];
+    }
+    //navio na posição vertical
+    int linhaV = 6, colunaV = 7; //posição inicial
+    for (int i = 0; i < 3; i++){
+        tabuleiro[linhaV + i][colunaV] = navioV[i];
+    }
+    if (colunaH + 3 > 10) {
+        printf("Navio horizontal fora dos limites!\n");
+    }
+    if (linhaV + 3 > 10) {
+        printf("Navio vertical fora dos limites!\n");
+    }
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            printf("%d ", tabuleiro[i][j]);
+        }
+        printf("\n");
+
+  
+    }
+
 
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
