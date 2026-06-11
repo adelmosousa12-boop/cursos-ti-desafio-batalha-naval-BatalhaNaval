@@ -1,10 +1,10 @@
-#include <stdio.h>
+
 
 // Desafio Batalha Naval - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
 // Siga os comentários para implementar cada parte do desafio.
 
-int main() {
+/*int main() {
     // Nível Novato - Posicionamento dos Navios
     printf("Bem vindo ao jogo de Batalha Naval! \n");
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
@@ -34,15 +34,77 @@ int main() {
             printf("%d ", tabuleiro[i][j]);
         }
         printf("\n");
-
-  
-    }
-
+    }*/
 
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
     // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+#include <stdio.h>
+    //Definido as constantes
+    #define LINHAS 10
+    #define COLUNAS 10
+    #define NAVIO 3
+
+    //declarando as variáveis
+    int main(){
+        int tabuleiro [LINHAS] [COLUNAS] = {0};
+        printf("Bem vindo ao Batalha Naval - Nivel Aventureiro!\n\n");
+    //Navio na horizontal
+        int linhaHorizontal = 4, colunaHorizontal = 1; //variável
+    //condição 
+        if (colunaHorizontal + NAVIO < COLUNAS){ 
+            for(int i = 0; i < NAVIO; i++){
+                if(tabuleiro[linhaHorizontal][colunaHorizontal + i] == 0){
+                    tabuleiro[linhaHorizontal][colunaHorizontal + i] = 3;
+                }
+            }
+        }
+    //Navio na vertical 
+        int linhaVertical = 5, colunaVertical = 5;
+    //condição
+        if (linhaVertical + NAVIO < LINHAS){
+            for (int i = 0; i < NAVIO; i++){
+                if (tabuleiro[linhaVertical + i][colunaVertical]== 0){
+                    tabuleiro[linhaHorizontal + i][colunaVertical] = 3;
+                }
+            }
+        }
+
+    //Diagonal Princiapl
+        int linhaDiagonal1 = 0, colunaDiagonal1 = 0;
+    //condição
+        if (linhaDiagonal1 + NAVIO <= LINHAS && colunaDiagonal1 + NAVIO <= COLUNAS ){
+            for (int i = 0; i < NAVIO; i++){
+                if(tabuleiro[linhaDiagonal1 + i][colunaDiagonal1 + i] == 0){
+                    tabuleiro[linhaDiagonal1 + i][colunaDiagonal1 + i] = 3;
+                }
+            }
+        }
+
+    //Diagonal Secundária 
+        int linhaDiagonal2 = 0, colunaDiagonal2 = 9;
+    //condição
+        if (linhaDiagonal2 + NAVIO <= LINHAS && colunaDiagonal2 - (NAVIO -1) >= 0){
+            for (int i = 0; i < NAVIO; i++){
+                if (tabuleiro[linhaDiagonal2 + i][colunaDiagonal2 - i] == 0){
+                    tabuleiro[linhaDiagonal2 + i][colunaDiagonal2 - i] = 3;
+                }
+            }
+        }
+    //Exibindo resultado
+        printf("Tabuleido Batalha Naval\n ");
+        for(int i = 0; i < LINHAS; i++){
+            for(int j = 0; j < COLUNAS; j++){
+                printf(" %d ", tabuleiro[i][j]);
+            }
+            printf(" \n ");
+        }
+           return 0;
+            
+    }
+
+    
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
@@ -65,5 +127,4 @@ int main() {
     // 1 1 1 1 1
     // 0 0 1 0 0
 
-    return 0;
-}
+ 
